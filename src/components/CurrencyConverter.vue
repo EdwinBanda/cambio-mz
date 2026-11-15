@@ -1,9 +1,15 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
-import { formatNumber } from '../utils/formatters'
+import emailjs from '@emailjs/browser'
+import { formatDate, formatNumber } from '../utils/formatters'
 import CurrencyPicker from './CurrencyPicker.vue'
 
-const props = defineProps({ currencies: { type: Array, default: () => [] }, compact: Boolean })
+const props = defineProps({ currencies: { type: Array, default: () => [] }, compact: Boolean, allowEmail: Boolean })
+const email = ref('')
+const sending = ref(false)
+const emailMessage = ref('')
+const emailStatus = ref('')
+const conversionDate = ref(new Date())
 const amount = ref('')
 const from = ref('MZN')
 const to = ref('')
@@ -24,6 +30,46 @@ const result = computed(() => {
   if (!Number.isFinite(numericAmount) || numericAmount <= 0 || !sourceCurrency.value || !targetCurrency.value) return null
   return numericAmount * sourceCurrency.value.valueMzn / targetCurrency.value.valueMzn
 })
+
+watch([amount, from, to, result], () => {
+  conversionDate.value = new Date()
+  emailMessage.value = ''
+  emailStatus.value = ''
+}, { flush: 'sync' })
+watch(email, () => { emailMessage.value = ''; emailStatus.value = '' }, { flush: 'sync' })
+
+async function sendResult() {
+  if (sending.value || !props.allowEmail || props.compact || result.value === null || !Number.isFinite(result.value)) return
+  const recipient = email.value.trim()
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(recipient)) {
+    emailStatus.value = 'error'
+    emailMessage.value = 'Introduza um endereço de e-mail válido.'
+    return
+  }
+  // Capture the conversion before awaiting the request; editing remains available.
+  const parameters = {
+    to_email: recipient,
+    amount: formatNumber(Number(String(amount.value).replace(',', '.'))),
+    from_currency: from.value,
+    to_currency: to.value,
+    result: formatNumber(result.value),
+    rate: formatNumber(sourceCurrency.value.valueMzn / targetCurrency.value.valueMzn, 6),
+    date: formatDate(conversionDate.value),
+  }
+  sending.value = true
+  emailStatus.value = ''
+  emailMessage.value = ''
+  try {
+    await emailjs.send('service_zuufgtd', 'template_y5nxxf5', parameters, { publicKey: 'XNC1Vu7aKvXPMaLgT' })
+    emailStatus.value = 'success'
+    emailMessage.value = `Resultado enviado para ${recipient}.`
+  } catch {
+    emailStatus.value = 'error'
+    emailMessage.value = 'Não foi possível enviar o e-mail. Tente novamente.'
+  } finally {
+    sending.value = false
+  }
+}
 
 function invert() {
   const previous = from.value
@@ -56,6 +102,35 @@ function clear() {
       <div v-if="result !== null" class="conversion-summary"><span><i class="bi bi-check-circle-fill"></i> Estimativa calculada</span><button aria-label="Limpar conversão" @click="clear"><i class="bi bi-arrow-counterclockwise"></i> Limpar</button></div>
       <div v-else class="conversion-summary"><span><i class="bi bi-info-circle-fill"></i> Introduza um valor para converter</span><button aria-label="Limpar conversão" @click="clear"><i class="bi bi-arrow-counterclockwise"></i> Limpar</button></div>
       <div class="converter-note"><i class="bi bi-info-circle"></i><span>Demonstração: cada valor representa uma unidade sintética da moeda em meticais, apenas para experimentar a conversão. Não utilizar em transações.</span></div>
+      <form v-if="allowEmail && !compact && result !== null && Number.isFinite(result)" class="conversion-email" novalidate @submit.prevent="sendResult">
+        <h3>Enviar resultado por e-mail</h3>
+        <p>Envie esta simulação com valores demonstrativos para o seu e-mail.</p>
+        <div class="conversion-email-fields">
+          <label><span>Endereço de e-mail</span><input v-model="email" type="email" autocomplete="email" required placeholder="nome@exemplo.com" :aria-invalid="emailStatus === 'error' ? 'true' : undefined" /></label>
+          <button type="submit" :disabled="sending"><i class="bi bi-envelope"></i> {{ sending ? 'A enviar…' : 'Enviar resultado' }}</button>
+        </div>
+        <p v-if="emailMessage" class="conversion-email-message" :class="emailStatus" :role="emailStatus === 'error' ? 'alert' : 'status'">{{ emailMessage }}</p>
+      </form>
     </template>
   </section>
 </template>
+
+<style scoped>
+.conversion-email { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--line); }
+.conversion-email h3 { margin: 0 0 6px; font-size: 16px; font-weight: 700; color: var(--ink); }
+.conversion-email p { margin: 0 0 14px; font-size: 13px; color: var(--muted); }
+.conversion-email-fields { display: flex; align-items: flex-end; gap: 12px; }
+.conversion-email-fields label { flex: 1; min-width: 0; font-size: 12px; color: var(--muted); }
+.conversion-email-fields label span { display: block; margin-bottom: 6px; }
+.conversion-email-fields input { width: 100%; height: 42px; padding: 0 12px; border: 1px solid var(--line); border-radius: 8px; background: #fff; color: var(--ink); font: inherit; }
+.conversion-email-fields input:focus { outline: 2px solid var(--green); outline-offset: 2px; }
+.conversion-email-fields button { min-height: 42px; padding: 10px 16px; border: 0; border-radius: 8px; background: var(--green); color: #fff; font-size: 13px; font-weight: 600; }
+.conversion-email-fields button:hover { background: var(--green-dark); }
+.conversion-email-fields button:disabled { opacity: .65; cursor: wait; }
+.conversion-email .conversion-email-message { margin: 12px 0 0; overflow-wrap: anywhere; }
+.conversion-email-message.success { color: #17684c; }
+.conversion-email-message.error { color: #bd443a; }
+@media (max-width: 600px) {
+  .conversion-email-fields { flex-direction: column; align-items: stretch; }
+}
+</style>
