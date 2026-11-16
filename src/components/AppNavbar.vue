@@ -2,8 +2,8 @@
 import { computed, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-const props = defineProps({ title: String, eyebrow: String })
-const emit = defineEmits(['toggle-menu'])
+defineProps({ title: String, eyebrow: String, darkMode: Boolean })
+const emit = defineEmits(['toggle-menu', 'toggle-theme'])
 const router = useRouter()
 const query = ref('')
 const today = computed(() => new Intl.DateTimeFormat('pt-MZ', { dateStyle: 'full' }).format(new Date()))
@@ -26,6 +26,13 @@ function search() {
       </form>
       <div class="top-date"><i class="bi bi-calendar3"></i><span>{{ today }}</span></div>
       <span class="demo-badge"><i></i> MODO DEMONSTRAÇÃO</span>
+      <button
+        class="theme-toggle"
+        type="button"
+        :aria-label="darkMode ? 'Ativar tema claro' : 'Ativar tema escuro'"
+        :aria-pressed="darkMode"
+        @click="emit('toggle-theme')"
+      ><i :class="['bi', darkMode ? 'bi-sun' : 'bi-moon-stars']"></i></button>
     </div>
   </header>
 </template>

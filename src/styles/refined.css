@@ -2199,8 +2199,13 @@ body {
 
   .dashboard-converter .conversion-fields,
   .conversion-fields {
-    grid-template-columns: minmax(0, 1fr) 30px minmax(0, 1fr);
-    gap: 6px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+
+  .conversion-fields > .invert-button {
+    justify-self: center;
+    transform: rotate(90deg);
   }
 
   .field-control {
@@ -2321,8 +2326,14 @@ body {
 
   .dashboard-converter .conversion-fields,
   .conversion-fields {
-    grid-template-columns: minmax(0, 1fr) 26px minmax(0, 1fr);
-    gap: 4px;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 7px;
+  }
+
+  .conversion-fields > .invert-button {
+    width: 32px;
+    height: 32px;
+    transform: rotate(90deg);
   }
 
   .currency-picker {
@@ -2334,7 +2345,260 @@ body {
   }
 
   .invert-button {
-    width: 26px;
-    height: 26px;
+    width: 32px;
+    height: 32px;
+  }
+}
+
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border: 1px solid #dce3eb;
+  border-radius: 5px;
+  background: #fff;
+  color: var(--green-dark);
+  font-size: 16px;
+  transition: background .15s, color .15s, border-color .15s;
+}
+
+.theme-toggle:hover {
+  background: #f0f4f9;
+}
+
+html.dark-theme {
+  color-scheme: dark;
+  --ink: #e7edf3;
+  --muted: #a8b4c0;
+  --line: #34414e;
+  --surface: #18212b;
+  --green: #8dbbe8;
+  --green-dark: #b2d2f0;
+  --green-soft: #26394b;
+  --chart-text: #c0cedb;
+  --chart-grid: #34414e;
+  --chart-bar: rgba(111, 169, 221, .82);
+  background: #10161d;
+  color: var(--ink);
+}
+
+html.dark-theme body,
+html.dark-theme #app,
+html.dark-theme .app-shell {
+  background: #10161d;
+  color: var(--ink);
+}
+
+html.dark-theme .app-sidebar,
+html.dark-theme .topbar,
+html.dark-theme .app-footer,
+html.dark-theme .chart-panel,
+html.dark-theme .converter-panel,
+html.dark-theme .currency-list-panel,
+html.dark-theme .table-panel,
+html.dark-theme .stat-card,
+html.dark-theme .currency-card,
+html.dark-theme .about-card,
+html.dark-theme .state-card,
+html.dark-theme .currency-picker-menu,
+html.dark-theme .conversion-email {
+  border-color: #34414e;
+  background: #18212b;
+  color: var(--ink);
+}
+
+html.dark-theme .app-sidebar {
+  background: #141c25;
+}
+
+html.dark-theme .topbar,
+html.dark-theme .app-footer {
+  border-color: #2d3945;
+}
+
+html.dark-theme .topbar-heading h1,
+html.dark-theme .dashboard-intro h2,
+html.dark-theme .page-intro h2,
+html.dark-theme .panel-heading h2,
+html.dark-theme .dashboard-section-heading h3,
+html.dark-theme .about-hero h2,
+html.dark-theme .about-card h3,
+html.dark-theme .conversion-email h3,
+html.dark-theme .loading-state strong,
+html.dark-theme .error-copy strong,
+html.dark-theme .table-currency strong,
+html.dark-theme .table-rate,
+html.dark-theme .currency-list-row strong {
+  color: #e7edf3;
+}
+
+html.dark-theme .topbar-heading > span,
+html.dark-theme .nav-caption,
+html.dark-theme .side-link,
+html.dark-theme .brand-lockup small,
+html.dark-theme .sidebar-legal,
+html.dark-theme .page-intro p,
+html.dark-theme .intro-bottom p,
+html.dark-theme .sample-notice,
+html.dark-theme .section-kicker,
+html.dark-theme .panel-heading p,
+html.dark-theme .chart-legend,
+html.dark-theme .chart-disclaimer,
+html.dark-theme .list-footnote,
+html.dark-theme .currency-list-row,
+html.dark-theme .currency-table tbody td,
+html.dark-theme .table-footnote,
+html.dark-theme .about-card p,
+html.dark-theme .about-hero p,
+html.dark-theme .assumption-panel p,
+html.dark-theme .about-disclaimer,
+html.dark-theme .conversion-summary,
+html.dark-theme .converter-note,
+html.dark-theme .app-footer,
+html.dark-theme .conversion-email p {
+  color: #a8b4c0;
+}
+
+html.dark-theme .side-link:hover,
+html.dark-theme .side-link.router-link-active,
+html.dark-theme .side-link.active {
+  background: #202d39;
+  color: #b2d2f0;
+}
+
+html.dark-theme .sidebar-demo-card,
+html.dark-theme .about-symbol,
+html.dark-theme .list-currency-code,
+html.dark-theme .table-code,
+html.dark-theme .currency-symbol,
+html.dark-theme .currency-mini,
+html.dark-theme .stat-icon,
+html.dark-theme .demo-icon {
+  border-color: #34414e;
+  background: #22303d;
+  color: #b2d2f0;
+}
+
+html.dark-theme .field-control,
+html.dark-theme .top-search,
+html.dark-theme .table-search,
+html.dark-theme .top-search input,
+html.dark-theme .table-search input,
+html.dark-theme .field-control input,
+html.dark-theme .field-control select,
+html.dark-theme .result-value,
+html.dark-theme .conversion-email-fields input {
+  border-color: #3a4957;
+  background: #121a22;
+  color: #e7edf3;
+}
+
+html.dark-theme input::placeholder {
+  color: #8795a2;
+}
+
+html.dark-theme .currency-picker-trigger {
+  border-left-color: #3a4957;
+  background: #202c38;
+  color: #d9e5ef;
+}
+
+html.dark-theme .currency-picker-trigger:hover,
+html.dark-theme .currency-picker-trigger[aria-expanded='true'],
+html.dark-theme .currency-picker-option:hover,
+html.dark-theme .currency-picker-option.is-selected {
+  background: #273746;
+}
+
+html.dark-theme .currency-picker-option,
+html.dark-theme .picker-option-code,
+html.dark-theme .picker-option-copy strong {
+  color: #e0e8ef;
+}
+
+html.dark-theme .picker-option-copy small,
+html.dark-theme .picker-chevron,
+html.dark-theme .table-unit,
+html.dark-theme .table-arrow {
+  color: #a8b4c0;
+}
+
+html.dark-theme .currency-table {
+  --bs-table-bg: transparent;
+  --bs-table-color: #cbd5df;
+  --bs-table-border-color: #34414e;
+  --bs-table-hover-bg: #202d39;
+  --bs-table-hover-color: #e7edf3;
+}
+
+html.dark-theme .currency-table thead th {
+  color: #aebdca;
+}
+
+html.dark-theme .currency-table tbody td,
+html.dark-theme .currency-list-row,
+html.dark-theme .currency-list,
+html.dark-theme .table-footnote {
+  border-color: #34414e;
+}
+
+html.dark-theme .currency-table tbody tr:hover {
+  background: #202d39;
+}
+
+html.dark-theme .assumption-panel,
+html.dark-theme .history-note,
+html.dark-theme .about-disclaimer,
+html.dark-theme .converter-note {
+  border-color: #3c4b58;
+  background: #202a34;
+}
+
+html.dark-theme .about-hero {
+  border-color: #34414e;
+  background: #18212b;
+}
+
+html.dark-theme .refresh-button,
+html.dark-theme .sort-button,
+html.dark-theme .invert-button,
+html.dark-theme .mobile-menu,
+html.dark-theme .sidebar-close,
+html.dark-theme .theme-toggle {
+  border-color: #42515f;
+  background: #202a34;
+  color: #c5dcf2;
+}
+
+html.dark-theme .refresh-button:hover,
+html.dark-theme .sort-button:hover,
+html.dark-theme .invert-button:hover,
+html.dark-theme .mobile-menu:hover,
+html.dark-theme .theme-toggle:hover {
+  background: #2a3947;
+}
+
+html.dark-theme .demo-badge {
+  background: #2a2a20;
+  color: #e2ce90;
+}
+
+html.dark-theme .sidebar-backdrop {
+  background: #0009;
+}
+
+html.dark-theme a:focus-visible,
+html.dark-theme button:focus-visible,
+html.dark-theme input:focus-visible,
+html.dark-theme select:focus-visible {
+  outline-color: #9dc8ef;
+}
+
+@media (max-width: 620px) {
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
   }
 }
