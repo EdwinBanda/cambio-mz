@@ -3694,3 +3694,266 @@ html.dark-theme .sidebar-backdrop {
     font-size: 10px;
   }
 }
+
+/* Refined, consistent surfaces and form controls. */
+.app-sidebar,
+.topbar,
+.app-footer,
+.converter-panel,
+.chart-panel,
+.currency-list-panel,
+.table-panel,
+.stat-card,
+.currency-card,
+.about-card,
+.state-card,
+.assumption-panel {
+  border-radius: 12px;
+}
+
+.app-sidebar {
+  top: 12px;
+  right: auto;
+  bottom: 12px;
+  left: 12px;
+  height: auto;
+  border: 1px solid var(--line);
+}
+
+.app-main {
+  margin-left: 256px;
+  padding: 12px 12px 12px 0;
+}
+
+.topbar {
+  min-height: 72px;
+  padding: 12px clamp(18px, 3vw, 36px);
+  border: 1px solid var(--line);
+}
+
+.page-content {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding: clamp(24px, 3.5vw, 48px) clamp(18px, 3vw, 40px);
+}
+
+.page-stack {
+  gap: 24px;
+}
+
+.converter-panel,
+.chart-panel,
+.currency-list-panel,
+.table-panel,
+.stat-card,
+.currency-card,
+.about-card {
+  border-color: #e6ebe7;
+  box-shadow: 0 4px 18px #183a2508;
+}
+
+.converter-panel {
+  padding: clamp(22px, 3vw, 34px);
+}
+
+.panel-heading h2 {
+  font-size: 19px;
+  letter-spacing: -.35px;
+}
+
+.panel-heading p,
+.page-intro p {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.conversion-fields {
+  grid-template-columns: minmax(0, 1fr) 42px minmax(0, 1fr);
+  gap: clamp(12px, 2vw, 24px);
+  margin-top: 28px;
+}
+
+.conversion-field > span {
+  margin-bottom: 9px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.field-control {
+  height: 58px;
+  border-color: #dfe7e1;
+  border-radius: 9px;
+  background: #fff;
+}
+
+.field-control input,
+.result-value {
+  padding-inline: 16px;
+  font-size: 18px;
+}
+
+.currency-picker {
+  flex-basis: 96px;
+}
+
+.currency-picker-trigger {
+  border-radius: 0 8px 8px 0;
+  gap: 5px;
+}
+
+.country-flag {
+  width: 25px;
+  height: 20px;
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  border: 0;
+  border-radius: 2px;
+  background: transparent;
+  font-size: 19px;
+  line-height: 1;
+}
+
+.picker-selected-code {
+  font-size: 11px;
+}
+
+.currency-picker-menu {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  box-shadow: 0 14px 32px #1c33241c;
+}
+
+.currency-picker-option {
+  min-height: 52px;
+  border-radius: 7px;
+}
+
+.invert-button,
+.theme-toggle,
+.mobile-menu,
+.refresh-button,
+.sort-button,
+.btn-retry,
+.conversion-email-fields input,
+.conversion-email-fields button {
+  border-radius: 8px;
+}
+
+.invert-button {
+  width: 36px;
+  height: 36px;
+  align-self: center;
+}
+
+.conversion-summary {
+  margin-top: 18px;
+  font-size: 12px;
+}
+
+.converter-note {
+  margin-top: 16px;
+  padding: 12px 14px;
+  border-radius: 9px;
+  font-size: 11px;
+}
+
+.page-intro {
+  margin-bottom: 2px;
+}
+
+.page-intro h2 {
+  font-size: clamp(25px, 3vw, 32px);
+}
+
+.intro-icon,
+.converter-heading-icon {
+  width: 42px;
+  height: 42px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--green-soft);
+  font-size: 17px;
+}
+
+@media (max-width: 850px) {
+  .app-sidebar {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 100vh;
+    border-radius: 0 12px 12px 0;
+  }
+
+  .app-main {
+    margin-left: 0;
+    padding: 10px;
+  }
+
+  .topbar {
+    min-height: 66px;
+    border-radius: 10px;
+  }
+}
+
+@media (min-width: 851px) and (max-width: 1200px) {
+  .app-main {
+    margin-left: 248px;
+  }
+}
+
+@media (max-width: 560px) {
+  .app-main {
+    padding: 8px;
+  }
+
+  .topbar {
+    min-height: 60px;
+    padding-inline: 12px;
+  }
+
+  .page-content {
+    padding: 24px 8px 30px;
+  }
+
+  .page-stack {
+    gap: 18px;
+  }
+
+  .page-intro {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .page-intro h2 {
+    font-size: 24px;
+  }
+
+  .page-intro p {
+    font-size: 12px;
+  }
+
+  .converter-panel {
+    padding: 20px 16px;
+  }
+
+  .conversion-fields {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .invert-button {
+    justify-self: center;
+    transform: rotate(90deg);
+  }
+
+  .invert-button:hover {
+    transform: rotate(90deg);
+  }
+
+  .currency-picker-menu {
+    width: min(260px, calc(100vw - 44px));
+  }
+}
