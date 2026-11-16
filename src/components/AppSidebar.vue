@@ -7,6 +7,7 @@ const links = [
   { to: '/conversor', label: 'Conversor', icon: 'bi-arrow-left-right' },
   { to: '/taxas', label: 'Taxas de câmbio', icon: 'bi-list-columns-reverse' },
   { to: '/comparacao', label: 'Comparação', icon: 'bi-bar-chart-line' },
+  { to: '/sobre', label: 'Sobre', icon: 'bi-info-circle' },
 ]
 </script>
 
@@ -32,7 +33,6 @@ const links = [
         <p>Dados de demonstração</p>
         <small>As cotações são sintéticas e não devem ser usadas em transações.</small>
       </div>
-      <RouterLink to="/sobre" class="side-link about-link"><i class="bi bi-info-circle"></i><span>Sobre a plataforma</span></RouterLink>
       <div class="sidebar-legal">© {{ new Date().getFullYear() }} Cambio-MZ</div>
     </div>
   </aside>
