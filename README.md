@@ -18,7 +18,9 @@ npm run build
 npm run preview
 ```
 
-O build de produção usa `/cambio-mz/` como base (repositório GitHub `Cambio-MZ`) e o Vue Router utiliza navegação por hash. Se o repositório de publicação tiver outro nome, atualize `base` em `vite.config.js` para corresponder ao caminho do projeto.
+O workflow `.github/workflows/deploy.yml` compila o site e publica `dist` no GitHub Pages a cada push para `main` (ou manualmente em **Actions → Deploy to GitHub Pages → Run workflow**). Em **Settings → Pages**, selecione **GitHub Actions** como origem de publicação.
+
+O build usa `/cambio-mz/` como base para o repositório `jrdimande/cambio-mz`, e o Vue Router usa navegação por hash para funcionar em páginas de projeto.
 
 ## Conversão
 
