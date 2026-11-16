@@ -17,8 +17,8 @@ function renderChart() {
       labels: ranked.value.map((item) => item.code),
       datasets: [{
         data: ranked.value.map((item) => item.valueMzn),
-        backgroundColor: ranked.value.map((_, index) => index === 0 ? '#efc34d' : 'rgba(36, 79, 123, .78)'),
-        borderRadius: 7,
+        backgroundColor: 'rgba(36, 79, 123, .78)',
+        borderRadius: 2,
         borderSkipped: false,
         barThickness: 25,
       }],
@@ -27,7 +27,7 @@ function renderChart() {
       indexAxis: 'y',
       responsive: true,
       maintainAspectRatio: false,
-      animation: { duration: 450 },
+      animation: { duration: 200 },
       plugins: {
         legend: { display: false },
         tooltip: { callbacks: { label: (context) => ` ${formatNumber(context.parsed.x)} MZN · exemplo` } },
@@ -48,7 +48,7 @@ onBeforeUnmount(() => chart?.destroy())
 <template>
   <section class="chart-panel">
     <div class="panel-heading chart-heading">
-      <div><span class="section-kicker">DADOS SINTÉTICOS</span><h2>Comparação de valores</h2><p>Valores de exemplo por unidade de moeda, em MZN.</p></div>
+      <div><span class="section-kicker">VALORES SINTÉTICOS</span><h2>Comparação de valores</h2><p>Valor de uma unidade de cada moeda, em MZN.</p></div>
       <span class="chart-legend"><i></i> Valor de exemplo</span>
     </div>
     <div v-if="!ranked.length" class="chart-empty"><i class="bi bi-bar-chart"></i><span>Sem valores disponíveis para comparar.</span></div>

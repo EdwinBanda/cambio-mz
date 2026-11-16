@@ -1118,6 +1118,585 @@ h5,
     right: -3px;
   }
 }
+
+/* Restrained visual system for a financial reference interface. */
+:root {
+  --green: #214f7d;
+  --green-dark: #173b60;
+  --green-soft: #edf3f8;
+  --red: #a64b45;
+  --yellow: #a77a24;
+  --ink: #202b35;
+  --muted: #687582;
+  --line: #dfe5ea;
+  --surface: #fff;
+  background: #f4f6f8;
+  color: var(--ink);
+}
+
+body,
+.page-content {
+  background: #f4f6f8;
+  color: var(--ink);
+}
+
+body {
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.app-sidebar,
+.topbar,
+.app-footer {
+  background: #fff;
+  border-color: var(--line);
+}
+
+.app-sidebar {
+  width: 236px;
+  padding: 24px 17px 16px;
+}
+
+.app-main {
+  margin-left: 236px;
+}
+
+.brand-lockup {
+  gap: 10px;
+  padding: 2px 5px 38px;
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 4px;
+  background: var(--green-dark);
+  box-shadow: none;
+  transform: none;
+}
+
+.brand-name {
+  font-size: 15px;
+  letter-spacing: -.3px;
+}
+
+.brand-lockup small,
+.sidebar-demo-card small {
+  color: #74808a;
+}
+
+.nav-caption,
+.section-kicker {
+  color: #687582;
+  font-size: 10px;
+  letter-spacing: .65px;
+}
+
+.side-nav {
+  gap: 2px;
+}
+
+.side-link {
+  min-height: 39px;
+  border-radius: 3px;
+  color: #4e5d69;
+}
+
+.side-link:hover {
+  background: #f3f6f8;
+  color: var(--green-dark);
+  transform: none;
+}
+
+.side-link.router-link-active,
+.side-link.active {
+  background: #edf2f6;
+  color: var(--green-dark);
+}
+
+.side-link.router-link-active::before,
+.side-link.active::before {
+  width: 2px;
+  inset: 7px auto 7px 0;
+  background: var(--green);
+}
+
+.sidebar-demo-card {
+  margin: 0 2px 13px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fff;
+}
+
+.demo-icon,
+.converter-heading-icon,
+.intro-icon,
+.about-card-icon,
+.currency-symbol,
+.currency-mini,
+.stat-icon,
+.list-currency-code {
+  border-radius: 4px;
+}
+
+.sidebar-demo-card p {
+  color: #263746;
+  font-size: 11px;
+}
+
+.sidebar-legal {
+  border-top-color: var(--line);
+  color: #7b8791;
+}
+
+.topbar {
+  min-height: 70px;
+  padding: 0 38px;
+}
+
+.topbar-heading > span {
+  color: #687582;
+  font-size: 10px;
+}
+
+.topbar-heading h1 {
+  color: #202b35;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.topbar-actions {
+  gap: 15px;
+}
+
+.top-search,
+.table-search,
+.field-control,
+.refresh-button,
+.sort-button {
+  border-color: #d5dde4;
+  border-radius: 4px;
+}
+
+.top-search {
+  background: #fff;
+}
+
+.demo-badge {
+  color: #536473;
+  font-size: 9px;
+  letter-spacing: .2px;
+}
+
+.demo-badge i {
+  background: #647d91;
+}
+
+.page-content {
+  max-width: 1380px;
+  padding: 34px 38px 40px;
+}
+
+.page-stack {
+  gap: 26px;
+}
+
+.dashboard-intro {
+  padding: 0 0 20px;
+  border-bottom-color: #d9e0e5;
+}
+
+.intro-overline {
+  color: #687582;
+  font-size: 10px;
+  letter-spacing: .65px;
+}
+
+.intro-overline span {
+  width: 12px;
+  height: 2px;
+  background: var(--green);
+}
+
+.dashboard-intro h2,
+.dashboard-intro h2 em,
+.page-intro h2,
+.about-hero h2,
+.about-hero h2 em {
+  color: #202b35;
+  font-family: Inter, 'Segoe UI', Arial, sans-serif !important;
+  font-size: clamp(27px, 3vw, 34px);
+  font-weight: 600;
+  letter-spacing: -.7px;
+  line-height: 1.2;
+}
+
+.dashboard-intro h2 {
+  margin: 12px 0 10px;
+}
+
+.dashboard-intro h2 em {
+  font-style: normal;
+}
+
+.intro-bottom p,
+.sample-notice,
+.page-intro p {
+  color: #5f6c77;
+  font-size: 12px;
+}
+
+.sample-notice i {
+  color: #657f94;
+}
+
+.dashboard-section-heading h3,
+.panel-heading h2 {
+  color: #263746;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -.2px;
+}
+
+.dashboard-section-heading {
+  margin-bottom: 10px;
+}
+
+.chart-panel,
+.converter-panel,
+.currency-list-panel,
+.table-panel,
+.about-card,
+.assumption-panel,
+.state-card {
+  border-color: #dfe5ea;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: none;
+}
+
+.chart-panel,
+.converter-panel,
+.currency-list-panel,
+.table-panel {
+  padding: 19px;
+}
+
+.panel-heading p,
+.chart-legend,
+.chart-disclaimer,
+.list-footnote {
+  color: #687582;
+}
+
+.chart-legend i {
+  border-radius: 1px;
+  background: var(--green);
+}
+
+.chart-disclaimer i,
+.text-link,
+.update-button,
+.top-date i,
+.table-footnote i,
+.conversion-summary span i,
+.converter-note > i {
+  color: var(--green);
+}
+
+.field-control {
+  background: #fff;
+}
+
+.field-control input,
+.result-value {
+  color: #263746;
+}
+
+.field-control select,
+.currency-picker-trigger {
+  background: #f4f6f8;
+}
+
+.field-control:focus-within,
+.conversion-email-fields input:focus {
+  border-color: var(--green);
+  box-shadow: 0 0 0 2px #214f7d18;
+}
+
+.invert-button,
+.currency-picker-trigger,
+.currency-picker-option,
+.refresh-button,
+.sort-button,
+.btn-retry {
+  border-radius: 4px;
+}
+
+.invert-button:hover {
+  transform: none;
+}
+
+.converter-note,
+.assumption-panel {
+  border-left: 2px solid #a77a24;
+  background: #f6f7f8;
+  color: #586672;
+}
+
+.assumption-panel {
+  border: 1px solid var(--line);
+}
+
+.assumption-icon {
+  border-radius: 4px;
+  background: #edf3f8;
+  color: var(--green);
+}
+
+.assumption-panel h3 {
+  color: #263746;
+}
+
+.assumption-panel p {
+  color: #5f6c77;
+}
+
+.currency-list {
+  border-top-color: var(--line);
+}
+
+.currency-list-row {
+  border-bottom-color: #e8edf1;
+}
+
+.currency-list-row strong,
+.table-currency strong,
+.table-rate {
+  color: #263746;
+}
+
+.list-currency-code,
+.table-code {
+  border-radius: 3px;
+  background: #edf2f6;
+  color: #314f68;
+}
+
+.currency-table thead th {
+  color: #536473;
+  font-size: 9px;
+}
+
+.currency-table tbody td {
+  border-color: #e8edf1;
+  color: #53616d;
+}
+
+.currency-table tbody tr:hover {
+  background: #f5f7f9;
+}
+
+.table-footnote {
+  color: #5f6c77;
+}
+
+.text-link {
+  font-size: 11px;
+}
+
+.page-intro {
+  padding: 0;
+}
+
+.page-intro h2 {
+  margin: 7px 0;
+  font-size: clamp(26px, 3vw, 32px);
+}
+
+.intro-icon {
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--green);
+}
+
+.refresh-button,
+.sort-button {
+  color: var(--green-dark);
+  background: #fff;
+}
+
+.refresh-button:hover,
+.sort-button:hover {
+  background: #f3f6f8;
+}
+
+.about-hero {
+  min-height: auto;
+  padding: 25px 27px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #fff;
+  color: var(--ink);
+}
+
+.about-hero::after {
+  display: none;
+}
+
+.about-symbol {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 13px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #f4f6f8;
+  color: var(--green);
+}
+
+.about-hero .section-kicker {
+  color: #687582;
+}
+
+.about-hero h2,
+.about-hero h2 em {
+  margin: 7px 0;
+  font-size: clamp(27px, 3vw, 34px);
+}
+
+.about-hero p {
+  color: #5f6c77;
+  font-size: 12px;
+}
+
+.about-card {
+  padding: 19px;
+}
+
+.about-card h3 {
+  color: #263746;
+}
+
+.about-card p {
+  color: #5f6c77;
+  line-height: 1.65;
+}
+
+.about-disclaimer {
+  border: 1px solid #e8e1d2;
+  border-radius: 4px;
+  background: #faf8f3;
+  color: #5f584a;
+}
+
+.about-disclaimer i {
+  color: #8d6e30;
+}
+
+.app-footer {
+  min-height: 46px;
+  padding: 0 38px;
+  color: #687582;
+  font-size: 10px;
+}
+
+.stat-card,
+.currency-card,
+.about-card {
+  border-color: var(--line);
+  border-radius: 4px;
+}
+
+.stat-card:hover,
+.currency-card:hover,
+.about-card:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.currency-card.featured {
+  border-color: #b8c8d5;
+  background: #fff;
+}
+
+.currency-picker-menu {
+  border-color: var(--line);
+  border-radius: 4px;
+  box-shadow: 0 5px 15px #172b3b14;
+}
+
+.currency-picker-option:hover,
+.currency-picker-option.is-selected {
+  background: #f1f5f8;
+}
+
+.conversion-email-fields input,
+.conversion-email-fields button {
+  border-radius: 4px;
+}
+
+.conversion-email-fields button {
+  background: var(--green);
+}
+
+.conversion-email-fields button:hover {
+  background: var(--green-dark);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #214f7d;
+  outline-offset: 2px;
+}
+
+@media (max-width: 1200px) {
+  .app-sidebar {
+    width: 220px;
+  }
+
+  .app-main {
+    margin-left: 220px;
+  }
+}
+
+@media (max-width: 850px) {
+  .app-sidebar {
+    width: 260px;
+  }
+
+  .app-main {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 620px) {
+  .dashboard-intro h2 {
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .intro-bottom {
+    gap: 8px;
+  }
+
+  .sample-notice {
+    white-space: normal;
+  }
+
+  .about-hero {
+    padding: 21px 18px;
+  }
+
+  .app-footer {
+    padding: 9px 15px;
+  }
+}
+
 /* Layout refinado para equilibrar a área útil em ecrãs largos e estreitos. */
 .app-sidebar {
   box-shadow: 1px 0 0 #e1e7ec;

@@ -7,7 +7,7 @@ const { currencies } = useDemoCurrencies()
 
 <template>
   <div class="page-stack">
-    <section class="page-intro"><div><span class="section-kicker">MODO DEMONSTRAÇÃO · VALORES SINTÉTICOS</span><h2>Experimente o conversor.</h2><p>Escolha as moedas, introduza um valor e explore os controlos da interface.</p></div><div class="intro-icon"><i class="bi bi-arrow-left-right"></i></div></section>
+    <section class="page-intro"><div><span class="section-kicker">VALORES SINTÉTICOS · DEMONSTRAÇÃO</span><h2>Conversor de moedas</h2><p>Introduza um valor e selecione as moedas de origem e destino.</p></div><div class="intro-icon"><i class="bi bi-arrow-left-right"></i></div></section>
     <CurrencyConverter :currencies="currencies" allow-email />
     <section class="assumption-panel">
       <div class="assumption-icon"><i class="bi bi-lightbulb"></i></div>

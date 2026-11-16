@@ -8,11 +8,11 @@ import About from '../views/About.vue'
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
-    { path: '/', name: 'dashboard', component: Dashboard, meta: { title: 'Início', eyebrow: 'Ferramentas de câmbio · Demonstração' } },
-    { path: '/conversor', name: 'converter', component: Converter, meta: { title: 'Conversor', eyebrow: 'Faça as contas com confiança' } },
-    { path: '/taxas', name: 'rates', component: Rates, meta: { title: 'Taxas de câmbio', eyebrow: 'Informação clara, decisão segura' } },
-    { path: '/comparacao', name: 'comparison', component: Comparison, meta: { title: 'Comparação', eyebrow: 'Todas as moedas, lado a lado' } },
-    { path: '/sobre', name: 'about', component: About, meta: { title: 'Sobre o Cambio-MZ', eyebrow: 'Câmbio com clareza' } },
+    { path: '/', name: 'dashboard', component: Dashboard, meta: { title: 'Visão geral', eyebrow: 'Cambio-MZ · Demonstração' } },
+    { path: '/conversor', name: 'converter', component: Converter, meta: { title: 'Conversor', eyebrow: 'Conversão de moedas' } },
+    { path: '/taxas', name: 'rates', component: Rates, meta: { title: 'Taxas de câmbio', eyebrow: 'Tabela de referência' } },
+    { path: '/comparacao', name: 'comparison', component: Comparison, meta: { title: 'Comparação', eyebrow: 'Comparação de valores' } },
+    { path: '/sobre', name: 'about', component: About, meta: { title: 'Sobre o Cambio-MZ', eyebrow: 'Sobre a plataforma' } },
   ],
   scrollBehavior: () => ({ top: 0 }),
 })

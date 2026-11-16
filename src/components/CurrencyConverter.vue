@@ -87,7 +87,7 @@ function clear() {
 <template>
   <section class="converter-panel" :class="{ 'compact-converter': compact }">
     <div v-if="!compact" class="panel-heading converter-heading">
-      <div><span class="section-kicker">SIMULAÇÃO</span><h2>Faça uma conversão</h2><p>Escolha as moedas e introduza o valor que pretende calcular.</p></div>
+      <div><span class="section-kicker">SIMULAÇÃO · VALORES SINTÉTICOS</span><h2>Conversão de moedas</h2><p>Selecione as moedas e introduza o valor a converter.</p></div>
       <div class="converter-heading-icon"><i class="bi bi-arrow-left-right"></i></div>
     </div>
     <div v-if="currencies.length < 2" class="converter-unavailable">

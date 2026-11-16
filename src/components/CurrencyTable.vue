@@ -29,7 +29,7 @@ const filteredCurrencies = computed(() => {
 <template>
   <section class="table-panel">
     <div class="panel-heading table-heading">
-      <div><span class="section-kicker">DADOS SINTÉTICOS · DEMONSTRAÇÃO</span><h2>Moedas para explorar</h2><p>Valores de exemplo para testar a interface e o conversor.</p></div>
+      <div><span class="section-kicker">VALORES SINTÉTICOS · DEMONSTRAÇÃO</span><h2>Valores por moeda</h2><p>Valores de referência expressos em meticais (MZN).</p></div>
       <div class="table-controls">
         <label class="table-search"><i class="bi bi-search"></i><input v-model="search" placeholder="Pesquisar moeda..." aria-label="Pesquisar moeda" /></label>
         <button class="sort-button" :aria-label="direction === 'desc' ? 'Ordenar crescente' : 'Ordenar decrescente'" @click="direction = direction === 'desc' ? 'asc' : 'desc'">

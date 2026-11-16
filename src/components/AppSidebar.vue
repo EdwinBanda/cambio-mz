@@ -14,11 +14,11 @@ const links = [
   <aside class="app-sidebar" :class="{ 'is-open': open }">
     <div class="brand-lockup">
       <div class="brand-mark"><span>c</span></div>
-      <div><span class="brand-name">cambio<span>mz</span></span><small>Câmbio com clareza</small></div>
+      <div><span class="brand-name">cambio<span>mz</span></span><small>Ferramentas de câmbio</small></div>
       <button class="sidebar-close" aria-label="Fechar menu" @click="$emit('close')"><i class="bi bi-x-lg"></i></button>
     </div>
 
-    <div class="nav-caption">MENU PRINCIPAL</div>
+    <div class="nav-caption">NAVEGAÇÃO</div>
     <nav class="side-nav" aria-label="Navegação principal">
       <RouterLink v-for="link in links" :key="link.to" :to="link.to" class="side-link" :exact-active-class="link.to === '/' ? 'active' : ''">
         <i :class="['bi', link.icon]"></i><span>{{ link.label }}</span>
@@ -29,8 +29,8 @@ const links = [
     <div class="sidebar-bottom">
       <div class="sidebar-demo-card">
         <div class="demo-icon"><i class="bi bi-bar-chart-line"></i></div>
-        <p>Modo demonstração</p>
-        <small>Valores sintéticos para explorar a interface.</small>
+        <p>Dados de demonstração</p>
+        <small>As cotações são sintéticas e não devem ser usadas em transações.</small>
       </div>
       <RouterLink to="/sobre" class="side-link about-link"><i class="bi bi-info-circle"></i><span>Sobre a plataforma</span></RouterLink>
       <div class="sidebar-legal">© {{ new Date().getFullYear() }} Cambio-MZ</div>

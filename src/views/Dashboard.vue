@@ -14,18 +14,18 @@ const ranked = computed(() => currencies.value.slice().sort((a, b) => b.valueMzn
 <template>
   <div class="page-stack">
     <section class="dashboard-intro">
-      <div class="intro-overline"><span></span> CÂMBIO, SEM COMPLICAÇÃO</div>
-      <h2>O seu dinheiro.<br /><em>Outra perspetiva.</em></h2>
+      <div class="intro-overline"><span></span> CÂMBIO-MZ · FERRAMENTAS</div>
+      <h2>Converta e compare moedas.</h2>
       <div class="intro-bottom">
-        <p>Faça uma simulação, compare moedas e explore a interface com tranquilidade.</p>
-        <span class="sample-notice"><i class="bi bi-info-circle"></i> Valores fictícios para demonstração</span>
+        <p>Simule conversões e consulte valores de referência em meticais.</p>
+        <span class="sample-notice"><i class="bi bi-info-circle"></i> Dados sintéticos para demonstração</span>
       </div>
     </section>
 
     <template v-if="hasCurrencies">
       <section class="dashboard-converter">
         <div class="dashboard-section-heading">
-          <div><span class="section-kicker">CONVERSOR</span><h3>Quanto quer converter?</h3></div>
+          <div><span class="section-kicker">CONVERSOR</span><h3>Conversão de moedas</h3></div>
           <RouterLink to="/conversor" class="text-link">Abrir conversor <i class="bi bi-arrow-up-right"></i></RouterLink>
         </div>
         <CurrencyConverter compact :currencies="currencies" />
@@ -35,7 +35,7 @@ const ranked = computed(() => currencies.value.slice().sort((a, b) => b.valueMzn
         <ComparisonChart compact :currencies="currencies" />
         <section class="currency-list-panel">
           <div class="dashboard-section-heading">
-            <div><span class="section-kicker">MOEDAS</span><h3>Valores de referência</h3></div>
+            <div><span class="section-kicker">MOEDAS</span><h3>Valores por moeda</h3></div>
             <RouterLink to="/taxas" class="text-link">Ver todas <i class="bi bi-arrow-up-right"></i></RouterLink>
           </div>
           <div class="currency-list">
@@ -45,7 +45,7 @@ const ranked = computed(() => currencies.value.slice().sort((a, b) => b.valueMzn
               <strong>{{ formatNumber(currency.valueMzn) }} <small>MZN</small></strong>
             </div>
           </div>
-          <p class="list-footnote">* Dados sintéticos, apenas para demonstração.</p>
+          <p class="list-footnote">Valores sintéticos; não representam taxas de mercado.</p>
         </section>
       </section>
     </template>
