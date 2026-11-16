@@ -3957,3 +3957,104 @@ html.dark-theme .sidebar-backdrop {
     width: min(260px, calc(100vw - 44px));
   }
 }
+
+.app-sidebar {
+  border-radius: 12px;
+  box-shadow: 0 8px 26px #183a2508;
+}
+
+.converter-panel,
+.chart-panel,
+.currency-list-panel,
+.table-panel,
+.stat-card,
+.currency-card,
+.about-card {
+  box-shadow: 0 2px 12px #183a2506;
+}
+
+.currency-picker {
+  min-width: 100px;
+  flex: 0 0 104px;
+}
+
+.currency-picker-trigger {
+  min-width: 100px;
+  justify-content: center;
+  gap: 6px;
+  padding-inline: 8px;
+}
+
+.country-flag {
+  width: 25px;
+  height: 17px;
+  display: block;
+  flex: 0 0 25px;
+  object-fit: cover;
+  border: 1px solid #dfe5e1;
+  border-radius: 3px;
+  background: #fff;
+}
+
+.field-control {
+  overflow: visible;
+  border-radius: 9px;
+}
+
+.currency-picker-trigger:focus-visible,
+.currency-picker-option:focus-visible,
+.invert-button:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+html.dark-theme .converter-panel,
+html.dark-theme .chart-panel,
+html.dark-theme .currency-list-panel,
+html.dark-theme .table-panel,
+html.dark-theme .stat-card,
+html.dark-theme .currency-card,
+html.dark-theme .about-card {
+  border-color: #303d38;
+  background: #18211d;
+  box-shadow: 0 2px 12px #00000012;
+}
+
+html.dark-theme .field-control {
+  border-color: #3a4941;
+  background: #18211d;
+}
+
+html.dark-theme .currency-picker-trigger {
+  border-left-color: #3a4941;
+  background: #202c26;
+  color: #e3eae5;
+}
+
+html.dark-theme .country-flag {
+  border-color: #4a574f;
+}
+
+@media (max-width: 560px) {
+  .currency-picker,
+  .currency-picker-trigger {
+    min-width: 100px;
+  }
+
+  .currency-picker {
+    flex-basis: 104px;
+  }
+
+  .country-flag {
+    width: 25px;
+    height: 17px;
+    flex-basis: 25px;
+  }
+
+  .field-control input,
+  .result-value {
+    min-width: 0;
+    padding-inline: 12px;
+    font-size: 16px;
+  }
+}
