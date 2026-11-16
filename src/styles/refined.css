@@ -1934,3 +1934,407 @@ select:focus-visible {
     font-size: 9px;
   }
 }
+
+/* Responsive layout refinements across phones, tablets, and compact laptops. */
+html,
+body,
+#app,
+.app-shell,
+.app-main {
+  width: 100%;
+  min-width: 0;
+}
+
+body {
+  overflow-x: clip;
+}
+
+.page-content,
+.page-stack,
+.dashboard-data-grid > *,
+.dashboard-converter,
+.chart-panel,
+.currency-list-panel,
+.table-panel,
+.converter-panel {
+  min-width: 0;
+}
+
+.app-sidebar {
+  height: 100vh;
+  height: 100dvh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.chart-canvas-wrap {
+  min-width: 0;
+}
+
+.currency-table {
+  min-width: 500px;
+}
+
+.table-responsive {
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-footnote,
+.assumption-panel p,
+.about-disclaimer p,
+.converter-note,
+.chart-disclaimer {
+  overflow-wrap: anywhere;
+}
+
+.result-value {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 1100px) {
+  .page-content {
+    padding-right: clamp(18px, 3vw, 32px);
+    padding-left: clamp(18px, 3vw, 32px);
+  }
+
+  .dashboard-data-grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(250px, .9fr);
+    gap: 14px;
+  }
+
+  .dashboard-converter {
+    max-width: none;
+  }
+}
+
+@media (max-width: 850px) {
+  .app-sidebar {
+    width: min(300px, calc(100vw - 48px));
+    padding-top: max(20px, env(safe-area-inset-top));
+    padding-bottom: max(18px, env(safe-area-inset-bottom));
+  }
+
+  .brand-lockup {
+    padding-bottom: 28px;
+  }
+
+  .topbar {
+    min-height: 68px;
+    padding-right: clamp(16px, 4vw, 28px);
+    padding-left: clamp(12px, 3vw, 24px);
+    gap: 12px;
+  }
+
+  .mobile-menu {
+    width: 44px;
+    height: 44px;
+  }
+
+  .topbar-heading {
+    min-width: 0;
+  }
+
+  .topbar-heading h1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .topbar-actions {
+    min-width: 0;
+    gap: 10px;
+  }
+
+  .top-search {
+    width: clamp(150px, 28vw, 220px);
+  }
+
+  .page-content {
+    padding-top: clamp(22px, 4vw, 32px);
+    padding-bottom: 32px;
+  }
+
+  .dashboard-data-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(220px, .85fr);
+  }
+
+  .about-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .dashboard-data-grid,
+  .dashboard-converter {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: none;
+  }
+
+  .dashboard-data-grid {
+    gap: 12px;
+  }
+
+  .dashboard-intro h2 {
+    max-width: 18ch;
+    font-size: clamp(30px, 7vw, 42px);
+    line-height: 1.08;
+    overflow-wrap: anywhere;
+  }
+
+  .intro-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .sample-notice {
+    white-space: normal;
+  }
+
+  .dashboard-section-heading {
+    align-items: flex-start;
+  }
+
+  .dashboard-section-heading > div {
+    min-width: 0;
+  }
+
+  .about-grid {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 620px) {
+  .topbar {
+    min-height: 64px;
+    padding-right: 12px;
+  }
+
+  .topbar-heading > span {
+    max-width: 42vw;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .topbar-heading h1 {
+    max-width: 46vw;
+    font-size: 14px;
+  }
+
+  .topbar-actions {
+    flex: 0 0 auto;
+  }
+
+  .top-search {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    justify-content: center;
+    border: 0;
+    background: #f3f6f8;
+  }
+
+  .top-search input,
+  .top-search kbd,
+  .top-date,
+  .demo-badge {
+    display: none;
+  }
+
+  .top-avatar {
+    display: none;
+  }
+
+  .page-content {
+    padding: 20px 14px 28px;
+  }
+
+  .page-stack {
+    gap: 20px;
+  }
+
+  .page-intro {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .page-intro > div:first-child {
+    min-width: 0;
+  }
+
+  .page-intro h2,
+  .about-hero h2 {
+    font-size: clamp(27px, 8vw, 36px);
+    line-height: 1.12;
+    overflow-wrap: anywhere;
+  }
+
+  .page-intro p {
+    font-size: 12px;
+    line-height: 1.55;
+  }
+
+  .intro-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .refresh-button {
+    min-height: 42px;
+    flex: 0 0 auto;
+    padding: 0 10px;
+    font-size: 11px;
+  }
+
+  .dashboard-converter .converter-panel,
+  .chart-panel,
+  .currency-list-panel,
+  .table-panel {
+    padding: 15px 13px;
+  }
+
+  .dashboard-converter .conversion-fields,
+  .conversion-fields {
+    grid-template-columns: minmax(0, 1fr) 30px minmax(0, 1fr);
+    gap: 6px;
+  }
+
+  .field-control {
+    height: 46px;
+  }
+
+  .field-control input,
+  .result-value {
+    padding: 0 7px;
+    font-size: 14px;
+  }
+
+  .currency-picker {
+    flex-basis: clamp(54px, 17vw, 68px);
+  }
+
+  .currency-picker-trigger {
+    min-height: 44px;
+    gap: 3px;
+    padding: 0 3px;
+  }
+
+  .currency-picker-trigger .country-flag {
+    width: 18px;
+    height: 14px;
+  }
+
+  .picker-selected-code {
+    font-size: 9px;
+  }
+
+  .currency-picker-menu {
+    width: min(290px, calc(100vw - 28px));
+    max-height: min(55vh, 340px);
+  }
+
+  .chart-heading {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .chart-legend {
+    white-space: normal;
+  }
+
+  .chart-canvas-wrap {
+    height: clamp(250px, 72vw, 360px);
+  }
+
+  .chart-canvas-wrap.compact-chart {
+    height: clamp(190px, 55vw, 240px);
+  }
+
+  .table-heading {
+    align-items: stretch;
+  }
+
+  .table-controls {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .table-search {
+    min-width: 0;
+    flex: 1 1 150px;
+  }
+
+  .sort-button {
+    min-height: 40px;
+  }
+
+  .table-footnote {
+    align-items: flex-start;
+    font-size: 10px;
+    line-height: 1.5;
+  }
+
+  .about-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .about-hero {
+    padding: 22px 18px;
+  }
+
+  .app-footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 5px;
+    padding: 12px 14px max(12px, env(safe-area-inset-bottom));
+    font-size: 10px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 380px) {
+  .topbar-heading > span {
+    max-width: 38vw;
+  }
+
+  .topbar-heading h1 {
+    max-width: 42vw;
+    font-size: 13px;
+  }
+
+  .page-content {
+    padding-right: 11px;
+    padding-left: 11px;
+  }
+
+  .dashboard-converter .converter-panel,
+  .chart-panel,
+  .currency-list-panel,
+  .table-panel {
+    padding-right: 11px;
+    padding-left: 11px;
+  }
+
+  .dashboard-converter .conversion-fields,
+  .conversion-fields {
+    grid-template-columns: minmax(0, 1fr) 26px minmax(0, 1fr);
+    gap: 4px;
+  }
+
+  .currency-picker {
+    flex-basis: 52px;
+  }
+
+  .currency-picker-trigger .country-flag {
+    display: none;
+  }
+
+  .invert-button {
+    width: 26px;
+    height: 26px;
+  }
+}
