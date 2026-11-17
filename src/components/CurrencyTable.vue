@@ -2,12 +2,17 @@
 import { computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { formatNumber } from '../utils/formatters'
+import CurrencyFlag from './CurrencyFlag.vue'
 
 const props = defineProps({ currencies: { type: Array, default: () => [] } })
 const route = useRoute()
 const router = useRouter()
 const search = ref(typeof route.query.q === 'string' ? route.query.q : '')
 const direction = ref('desc')
+
+function normalizeSearch(value) {
+  return value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLocaleLowerCase('pt')
+}
 
 watch(() => route.query.q, (value) => { search.value = typeof value === 'string' ? value : '' })
 watch(search, (value) => {
@@ -18,9 +23,9 @@ watch(search, (value) => {
 })
 
 const filteredCurrencies = computed(() => {
-  const term = search.value.trim().toLocaleLowerCase('pt')
+  const term = normalizeSearch(search.value.trim())
   return props.currencies
-    .filter((currency) => !term || currency.code.toLowerCase().includes(term) || currency.name.toLocaleLowerCase('pt').includes(term))
+    .filter((currency) => !term || normalizeSearch(currency.code).includes(term) || normalizeSearch(currency.name).includes(term))
     .slice()
     .sort((a, b) => direction.value === 'asc' ? a.valueMzn - b.valueMzn : b.valueMzn - a.valueMzn)
 })
@@ -39,13 +44,13 @@ const filteredCurrencies = computed(() => {
     </div>
     <div class="table-responsive">
       <table class="table currency-table">
-        <thead><tr><th>MOEDA</th><th>CÓDIGO</th><th class="text-end">VALOR DE EXEMPLO</th><th></th></tr></thead>
+        <thead><tr><th>MOEDA</th><th class="currency-code-column">CÓDIGO</th><th class="text-end">VALOR DE EXEMPLO</th><th class="table-action-column"></th></tr></thead>
         <tbody>
           <tr v-for="currency in filteredCurrencies" :key="currency.code">
-            <td><div class="table-currency"><div class="currency-mini">{{ currency.code.slice(0, 1) }}</div><strong>{{ currency.name }}</strong></div></td>
-            <td><span class="table-code">{{ currency.code }}</span></td>
+            <td><div class="table-currency"><CurrencyFlag :country-code="currency.countryCode" :country-name="currency.country" /><strong>{{ currency.name }}</strong><span class="table-code-inline">{{ currency.code }}</span></div></td>
+            <td class="currency-code-column"><span class="table-code">{{ currency.code }}</span></td>
             <td class="text-end"><strong class="table-rate">{{ formatNumber(currency.valueMzn) }}</strong><span class="table-unit"> MZN</span></td>
-            <td class="text-end"><i class="bi bi-chevron-right table-arrow"></i></td>
+            <td class="text-end table-action-column"><i class="bi bi-chevron-right table-arrow"></i></td>
           </tr>
           <tr v-if="filteredCurrencies.length === 0"><td colspan="4" class="empty-row"><i class="bi bi-search"></i><strong>Nenhuma moeda encontrada</strong><span>Ajuste a pesquisa e tente novamente.</span></td></tr>
         </tbody>

@@ -1,22 +1,10 @@
 :root {
-  font-family: 'DM Sans', sans-serif;
-  color: #17231d;
-  background: #f5f7f5;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  --green: #14704f;
-  --green-dark: #0e4e39;
-  --green-soft: #eaf4ef;
-  --red: #d54d48;
-  --yellow: #e6b83f;
-  --ink: #17231d;
-  --muted: #78847d;
-  --line: #e9eeea;
-  --surface: #fff;
 }
 
 * { box-sizing: border-box; }
-body { margin: 0; min-width: 320px; background: #f5f7f5; color: var(--ink); font-family: 'DM Sans', sans-serif; font-size: 14px; }
+body { margin: 0; min-width: 320px; }
 button, input, select { font: inherit; }
 a { color: inherit; text-decoration: none; }
 button { cursor: pointer; }

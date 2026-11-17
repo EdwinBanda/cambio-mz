@@ -6,6 +6,7 @@ import { formatNumber } from '../utils/formatters'
 import CurrencyConverter from '../components/CurrencyConverter.vue'
 import ComparisonChart from '../components/ComparisonChart.vue'
 import CurrencyTable from '../components/CurrencyTable.vue'
+import CurrencyFlag from '../components/CurrencyFlag.vue'
 
 const { currencies, hasCurrencies } = useDemoCurrencies()
 const ranked = computed(() => currencies.value.slice().sort((a, b) => b.valueMzn - a.valueMzn))
@@ -40,7 +41,7 @@ const ranked = computed(() => currencies.value.slice().sort((a, b) => b.valueMzn
           </div>
           <div class="currency-list">
             <div v-for="currency in ranked.slice(0, 5)" :key="currency.code" class="currency-list-row">
-              <span class="list-currency-code">{{ currency.code }}</span>
+              <span class="list-currency-code"><CurrencyFlag :country-code="currency.countryCode" :country-name="currency.country" />{{ currency.code }}</span>
               <span class="list-currency-name">{{ currency.name }}</span>
               <strong>{{ formatNumber(currency.valueMzn) }} <small>MZN</small></strong>
             </div>

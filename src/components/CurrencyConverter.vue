@@ -25,6 +25,7 @@ watch(currencies, (list) => {
 }, { immediate: true })
 const sourceCurrency = computed(() => currencies.value.find((item) => item.code === from.value))
 const targetCurrency = computed(() => currencies.value.find((item) => item.code === to.value))
+const hasAmount = computed(() => String(amount.value).trim().length > 0)
 const result = computed(() => {
   const numericAmount = Number(String(amount.value).replace(',', '.'))
   if (!Number.isFinite(numericAmount) || numericAmount <= 0 || !sourceCurrency.value || !targetCurrency.value) return null
@@ -86,22 +87,20 @@ function clear() {
 
 <template>
   <section class="converter-panel" :class="{ 'compact-converter': compact }">
-    <div v-if="!compact" class="panel-heading converter-heading">
-      <div><span class="section-kicker">SIMULAÇÃO · VALORES SINTÉTICOS</span><h2>Conversão de moedas</h2><p>Selecione as moedas e introduza o valor a converter.</p></div>
-      <div class="converter-heading-icon"><i class="bi bi-arrow-left-right"></i></div>
-    </div>
     <div v-if="currencies.length < 2" class="converter-unavailable">
       <i class="bi bi-currency-exchange"></i><span>Adicione moedas de exemplo para experimentar o conversor.</span>
     </div>
     <template v-else>
       <div class="conversion-fields">
-        <label class="conversion-field"><span>Tenho</span><div class="field-control"><input v-model="amount" type="number" min="0" step="any" placeholder="0,00" aria-label="Valor a converter" /><CurrencyPicker v-model="from" :currencies="currencies" label="Moeda de origem" /></div></label>
-        <button class="invert-button" aria-label="Inverter moedas" @click="invert"><i class="bi bi-arrow-down-up"></i></button>
-        <label class="conversion-field"><span>Quero receber</span><div class="field-control"><div class="result-value">{{ result === null ? '—' : formatNumber(result) }}</div><CurrencyPicker v-model="to" :currencies="currencies" label="Moeda de destino" /></div></label>
+        <label class="conversion-label conversion-source-label" for="conversion-amount">Tenho</label>
+        <label class="conversion-label conversion-target-label" for="conversion-result">Recebo</label>
+        <div class="field-control conversion-source-control"><input id="conversion-amount" v-model="amount" type="text" inputmode="decimal" autocomplete="off" placeholder="0,00" aria-label="Valor a converter" aria-describedby="conversion-help" :aria-invalid="hasAmount && result === null ? 'true' : undefined" /><CurrencyPicker v-model="from" :currencies="currencies" label="Moeda de origem" /></div>
+        <button class="invert-button" type="button" aria-label="Trocar moedas de origem e destino" title="Trocar moedas" @click="invert"><i class="bi bi-arrow-left-right" aria-hidden="true"></i></button>
+        <div class="field-control conversion-target-control"><output id="conversion-result" class="result-value" aria-live="polite">{{ result === null ? '—' : formatNumber(result) }}</output><CurrencyPicker v-model="to" :currencies="currencies" label="Moeda de destino" /></div>
       </div>
-      <div v-if="result !== null" class="conversion-summary"><span><i class="bi bi-check-circle-fill"></i> Estimativa calculada</span><button aria-label="Limpar conversão" @click="clear"><i class="bi bi-arrow-counterclockwise"></i> Limpar</button></div>
-      <div v-else class="conversion-summary"><span><i class="bi bi-info-circle-fill"></i> Introduza um valor para converter</span><button aria-label="Limpar conversão" @click="clear"><i class="bi bi-arrow-counterclockwise"></i> Limpar</button></div>
-      <div class="converter-note"><i class="bi bi-info-circle"></i><span>Demonstração: cada valor representa uma unidade sintética da moeda em meticais, apenas para experimentar a conversão. Não utilizar em transações.</span></div>
+      <div v-if="result !== null" class="conversion-summary"><span id="conversion-help"><i class="bi bi-check-circle-fill"></i> Resultado estimado</span><button type="button" aria-label="Limpar conversão" @click="clear"><i class="bi bi-arrow-counterclockwise"></i> Limpar</button></div>
+      <div v-else class="conversion-summary"><span id="conversion-help" :class="{ 'conversion-invalid': hasAmount }"><i :class="['bi', hasAmount ? 'bi-exclamation-circle-fill' : 'bi-info-circle-fill']"></i> {{ hasAmount ? 'Introduza um valor positivo válido' : 'Introduza um valor para converter' }}</span><button type="button" aria-label="Limpar conversão" @click="clear"><i class="bi bi-arrow-counterclockwise"></i> Limpar</button></div>
+      <div class="converter-note"><i class="bi bi-info-circle" aria-hidden="true"></i><span>Valores de demonstração, sem ligação ao mercado.</span></div>
       <form v-if="allowEmail && !compact && result !== null && Number.isFinite(result)" class="conversion-email" novalidate @submit.prevent="sendResult">
         <h3>Enviar resultado por e-mail</h3>
         <p>Envie esta simulação com valores demonstrativos para o seu e-mail.</p>

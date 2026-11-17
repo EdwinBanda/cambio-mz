@@ -21,7 +21,7 @@ function search() {
     <div class="topbar-actions">
       <form class="top-search" role="search" @submit.prevent="search">
         <i class="bi bi-search"></i>
-        <input v-model="query" aria-label="Pesquisar moeda" placeholder="Pesquisar moeda..." />
+        <input v-model="query" aria-label="Pesquisar moeda" placeholder="Pesquisar..." />
         <kbd>↵</kbd>
       </form>
       <div class="top-date"><i class="bi bi-calendar3"></i><span>{{ today }}</span></div>
